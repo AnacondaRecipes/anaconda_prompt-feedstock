@@ -37,11 +37,11 @@ about:
     Package to create shortcuts for terminals that open with an activated conda environment.
   license: BSD-3-Clause
   license_family: BSD
-  license_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/LICENSE
+  license_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/blob/main/LICENSE
   summary: Terminal shortcut creator for Anaconda
   home: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
   dev_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
-  doc_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
+  doc_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/blob/main/READNE.md
 
 extra:
   recipe-maintainers:
