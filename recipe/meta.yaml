@@ -39,8 +39,9 @@ about:
   license_family: BSD
   license_file: LICENSE
   summary: Terminal shortcut creator for Anaconda
+  home: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock
   dev_url: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock
-  dev_url: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock/README.md
+  doc_url: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock/README.md
 
 extra:
   recipe-maintainers:
