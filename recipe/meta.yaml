@@ -41,7 +41,7 @@ about:
   summary: Terminal shortcut creator for Anaconda
   home: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
   dev_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
-  doc_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/README.md
+  doc_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
 
 extra:
   recipe-maintainers:
