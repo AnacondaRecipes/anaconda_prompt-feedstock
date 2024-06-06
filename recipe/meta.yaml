@@ -1,0 +1,47 @@
+package:
+  name: anaconda_prompt-split
+  version: 1.0.0
+
+build:
+  number: 0
+  # Only building this on Windows for now until
+  # other platforms are fleshed out more.
+  skip: True  # [not win]
+
+requirements:
+  run_constrained:
+    - anaconda-navigator >=1.9.8
+    - menuinst >=2.1.0
+
+outputs:
+  - name: anaconda_prompt
+    script: bld_win.bat    # [win]
+    script: build_unix.sh  # [not win]
+    app:
+      entry:
+        start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
+      summary: Anaconda Prompt
+      icon: anaconda_prompt.png
+  - name: anaconda_powershell_prompt
+    skip: True  # [not win]
+    script: bld_win.bat
+    app:
+      entry:
+        start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
+      summary: Anaconda Powershell Prompt
+      icon: anaconda_prompt_powershell.png
+      type: desk
+
+about:
+  description: |
+    Package to create shortcuts for terminals that open with an activated conda environment.
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Terminal shortcut creator for Anaconda
+  dev_url: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock
+  dev_url: https://github.com/AnacondaRecipes/anaconda-prompt-feedstock/README.md
+
+extra:
+  recipe-maintainers:
+    - marcoesters
