@@ -26,10 +26,10 @@ outputs:
         - test -f ${PREFIX}/Menu/anaconda_prompt.icns || exit 1          # [osx]
         - test -f ${PREFIX}/Menu/anaconda_prompt.png || exit 1           # [linux]
     app:
-      entry:
-        start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
+      entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
       summary: Anaconda Prompt
       icon: anaconda_prompt.png
+      type: desk
   - name: anaconda_powershell_prompt
     skip: True  # [not win]
     script: bld_win.bat
@@ -42,8 +42,7 @@ outputs:
         - IF NOT EXIST %PREFIX%\\Menu\\anaconda_powershell_prompt_menu.json EXIT 1
         - IF NOT EXIST %PREFIX%\\Menu\\anaconda_powershell_prompt.ico EXIT 1
     app:
-      entry:
-        start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
+      entry: start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
       summary: Anaconda Powershell Prompt
       icon: anaconda_powershell_prompt.png
       type: desk
