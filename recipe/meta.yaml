@@ -45,7 +45,7 @@ outputs:
       entry:
         start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
       summary: Anaconda Powershell Prompt
-      icon: anaconda_prompt_powershell.png
+      icon: anaconda_powershell_prompt.png
       type: desk
 
 about:
