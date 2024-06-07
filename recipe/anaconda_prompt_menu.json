@@ -17,8 +17,8 @@
             "description": "Launches a terminal window with conda activated.",
             "platforms": {
                 "win": {
-                    "desktop": true,
-                    "quicklaunch": true,
+                    "desktop": false,
+                    "quicklaunch": false,
                     "terminal_profile": "Anaconda Prompt ({{ DISTRIBUTION_NAME }})",
                     "command": [
                         "%WINDIR%\\System32\\cmd.exe",

@@ -22,8 +22,8 @@
             ],
             "platforms": {
                 "win": {
-                    "desktop": true,
-                    "quicklaunch": true,
+                    "desktop": false,
+                    "quicklaunch": false,
                     "terminal_profile": "Anaconda Powershell Prompt ({{ DISTRIBUTION_NAME }})"
                 }
             }
