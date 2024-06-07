@@ -8,15 +8,23 @@ build:
   # other platforms are fleshed out more.
   skip: True  # [not win]
 
-requirements:
-  run_constrained:
-    - anaconda-navigator >=1.9.8
-    - menuinst >=2.1.0
 
 outputs:
   - name: anaconda_prompt
     script: bld_win.bat    # [win]
     script: build_unix.sh  # [not win]
+    requirements:
+      run_constrained:
+        - anaconda-navigator >=1.9.8
+        - menuinst >=2.1.0
+    test:
+      commands:
+        - IF NOT EXIST %PREFIX%\\anaconda_prompt_menu.json EXIT 1  # [win]
+        - IF NOT EXIST %PREFIX%\\anaconda_prompt.ico EXIT 1        # [win]
+        - test -f ${PREFIX}/anaconda_prompt_menu.json || exit 1    # [not win]
+        - test -f ${PREFIX}/bin/anaconda_prompt  || exit 1         # [not win]
+        - test -f ${PREFIX}/anaconda_prompt.icns || exit 1         # [osx]
+        - test -f ${PREFIX}/anaconda_prompt.png || exit 1          # [linux]
     app:
       entry:
         start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
@@ -25,6 +33,14 @@ outputs:
   - name: anaconda_powershell_prompt
     skip: True  # [not win]
     script: bld_win.bat
+    requirements:
+      run_constrained:
+        - anaconda-navigator >=1.9.8
+        - menuinst >=2.1.0
+    test:
+      commands:
+        - IF NOT EXIST %PREFIX%\\anaconda_powershell_prompt_menu.json EXIT 1
+        - IF NOT EXIST %PREFIX%\\anaconda_powershell_prompt.ico EXIT 1
     app:
       entry:
         start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
