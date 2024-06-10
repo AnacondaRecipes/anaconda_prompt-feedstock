@@ -10,7 +10,7 @@ build:
 
 
 outputs:
-  - name: anaconda-prompt
+  - name: anaconda_prompt
     script: bld_win.bat    # [win]
     script: build_unix.sh  # [not win]
     requirements:
@@ -28,9 +28,9 @@ outputs:
     app:
       entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
       summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
-      icon: anaconda_prompt.png
+      icon: anaconda_prompt
       type: desk
-  - name: anaconda-powershell-prompt
+  - name: anaconda_powershell_prompt
     skip: True  # [not win]
     script: bld_win.bat
     requirements:
@@ -44,7 +44,7 @@ outputs:
     app:
       entry: start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
       summary: Opens a PowerShell instance with conda activated (requires menuinst 2.1.0 or greater).
-      icon: anaconda_powershell_prompt.png
+      icon: anaconda_powershell_prompt
       type: desk
 
 app:
