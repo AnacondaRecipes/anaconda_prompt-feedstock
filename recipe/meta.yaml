@@ -47,6 +47,12 @@ outputs:
       icon: anaconda_powershell_prompt.png
       type: desk
 
+app:
+  entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
+  summary: Anaconda Prompt
+  icon: anaconda_prompt.png
+  type: desk
+
 about:
   description: |
     Package to create shortcuts for terminals that open with an activated conda environment.
