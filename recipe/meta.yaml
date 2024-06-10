@@ -10,7 +10,7 @@ build:
 
 
 outputs:
-  - name: anaconda_prompt
+  - name: anaconda-prompt
     script: bld_win.bat    # [win]
     script: build_unix.sh  # [not win]
     requirements:
@@ -27,10 +27,10 @@ outputs:
         - test -f ${PREFIX}/Menu/anaconda_prompt.png || exit 1           # [linux]
     app:
       entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
-      summary: Anaconda Prompt
+      summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
       icon: anaconda_prompt.png
       type: desk
-  - name: anaconda_powershell_prompt
+  - name: anaconda-powershell-prompt
     skip: True  # [not win]
     script: bld_win.bat
     requirements:
@@ -43,14 +43,14 @@ outputs:
         - IF NOT EXIST %PREFIX%\\Menu\\anaconda_powershell_prompt.ico EXIT 1
     app:
       entry: start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
-      summary: Anaconda Powershell Prompt
+      summary: Opens a PowerShell instance with conda activated (requires menuinst 2.1.0 or greater).
       icon: anaconda_powershell_prompt.png
       type: desk
 
 app:
-  entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
-  summary: Anaconda Prompt
-  icon: anaconda_prompt.png
+  entry: start cmd.exe "Anaconda Prompt" /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
+  summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
+  icon: anaconda_prompt
   type: desk
 
 about:
