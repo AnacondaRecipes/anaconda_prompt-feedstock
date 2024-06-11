@@ -1,5 +1,5 @@
 package:
-  name: anaconda_prompt-split
+  name: anaconda_prompt
   version: 1.0.0
 
 build:
@@ -9,43 +9,19 @@ build:
   skip: True  # [not win]
 
 
-outputs:
-  - name: anaconda_prompt
-    script: bld_win.bat    # [win]
-    script: build_unix.sh  # [not win]
-    requirements:
-      run_constrained:
-        - anaconda-navigator >=1.9.8
-        - menuinst >=2.1.0
-    test:
-      commands:
-        - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt_menu.json EXIT 1  # [win]
-        - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt.ico EXIT 1        # [win]
-        - test -f ${PREFIX}/Menu/anaconda_prompt_menu.json || exit 1     # [not win]
-        - test -f ${PREFIX}/bin/anaconda_prompt  || exit 1               # [not win]
-        - test -f ${PREFIX}/Menu/anaconda_prompt.icns || exit 1          # [osx]
-        - test -f ${PREFIX}/Menu/anaconda_prompt.png || exit 1           # [linux]
-    app:
-      entry: start cmd.exe /K "${CONDA_ROOT_PREFIX}\\Scripts\\activate.bat" "${CONDA_PREFIX}"  # [win]
-      summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
-      icon: anaconda_prompt.png
-      type: desk
-  - name: anaconda_powershell_prompt
-    skip: True  # [not win]
-    script: bld_win.bat
-    requirements:
-      run_constrained:
-        - anaconda-navigator >=1.9.8
-        - menuinst >=2.1.0
-    test:
-      commands:
-        - IF NOT EXIST %PREFIX%\\Menu\\anaconda_powershell_prompt_menu.json EXIT 1
-        - IF NOT EXIST %PREFIX%\\Menu\\anaconda_powershell_prompt.ico EXIT 1
-    app:
-      entry: start powershell.exe -ExecutionPolicy ByPass -NoExit -Command  "& '{CONDA_ROOT_PREFIX}\\shell\\condabin\\conda-hook.ps1' ; conda activate '{CONDA_PREFIX}'"
-      summary: Opens a PowerShell instance with conda activated (requires menuinst 2.1.0 or greater).
-      icon: anaconda_powershell_prompt.png
-      type: desk
+requirements:
+  run_constrained:
+    - anaconda-navigator >=1.9.8
+    - menuinst >=2.1.0
+
+test:
+  commands:
+    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt_menu.json EXIT 1  # [win]
+    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt.ico EXIT 1        # [win]
+    - test -f ${PREFIX}/Menu/anaconda_prompt_menu.json || exit 1     # [not win]
+    - test -f ${PREFIX}/bin/anaconda_prompt  || exit 1               # [not win]
+    - test -f ${PREFIX}/Menu/anaconda_prompt.icns || exit 1          # [osx]
+    - test -f ${PREFIX}/Menu/anaconda_prompt.png || exit 1           # [linux]
 
 app:
   entry: for /D %%i in ("${CONDA_ROOT_PREFIX}") do wt -w last new-tab -p "Anaconda Prompt (%%~ni)" # [win]
@@ -55,7 +31,7 @@ app:
 
 about:
   description: |
-    Package to create shortcuts for terminals that open with an activated conda environment.
+    Package to create shortcuts for terminals with an activated conda environment.
   license: BSD-3-Clause
   license_family: BSD
   license_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/blob/main/LICENSE
