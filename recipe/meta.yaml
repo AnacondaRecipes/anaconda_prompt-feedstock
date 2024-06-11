@@ -8,7 +8,6 @@ build:
   # other platforms are fleshed out more.
   skip: True  # [not win]
 
-
 requirements:
   run_constrained:
     - anaconda-navigator >=1.9.8
