@@ -25,7 +25,8 @@
                         "/K",
                         "{{ BASE_PREFIX }}\\Scripts\\activate.bat",
                         "{{ PREFIX }}"
-                    ]
+                    ],
+                    "working_dir": "{{ HOME }}"
                 },
                 "osx": {
                     "entitlements": [
