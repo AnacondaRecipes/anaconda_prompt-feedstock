@@ -31,8 +31,8 @@ app:
 about:
   description: |
     Package to create shortcuts for terminals with an activated conda environment.
-  license: BSD-3-Clause
-  license_family: BSD
+  license: LGPL-3.0  # base image has LGPL license
+  license_family: Other
   license_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/blob/main/LICENSE
   summary: Terminal shortcut creator for Anaconda
   home: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
