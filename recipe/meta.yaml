@@ -1,0 +1,44 @@
+package:
+  name: anaconda_prompt
+  version: 1.0.0
+
+build:
+  number: 0
+  # Only building this on Windows for now until
+  # other platforms are fleshed out more.
+  skip: True  # [not win]
+
+requirements:
+  run_constrained:
+    - anaconda-navigator >=1.9.8
+    - menuinst >=2.1.0
+
+test:
+  commands:
+    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt_menu.json EXIT 1  # [win]
+    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt.ico EXIT 1        # [win]
+    - test -f ${PREFIX}/Menu/anaconda_prompt_menu.json || exit 1     # [not win]
+    - test -f ${PREFIX}/bin/anaconda_prompt  || exit 1               # [not win]
+    - test -f ${PREFIX}/Menu/anaconda_prompt.icns || exit 1          # [osx]
+    - test -f ${PREFIX}/Menu/anaconda_prompt.png || exit 1           # [linux]
+
+app:
+  entry: for /D %%i in ("${CONDA_ROOT_PREFIX}") do wt -w last new-tab -p "Anaconda Prompt (%%~ni)" # [win]
+  summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
+  icon: anaconda_prompt.png
+  type: desk
+
+about:
+  description: |
+    Package to create shortcuts for terminals with an activated conda environment.
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: Terminal shortcut creator for Anaconda
+  home: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
+  dev_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock
+  doc_url: https://github.com/AnacondaRecipes/anaconda_prompt-feedstock/blob/main/README.md
+
+extra:
+  recipe-maintainers:
+    - marcoesters

@@ -1,0 +1,39 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "$id": "https://schemas.conda.io/menuinst-1.schema.json",
+    "menu_name": "Anaconda ({{ DISTRIBUTION_NAME }})",
+    "menu_items": [
+        {
+            "name": {
+                "target_environment_is_base": "Anaconda Prompt",
+                "target_environment_is_not_base": "Anaconda Prompt ({{ ENV_NAME }})"
+            },
+            "command": [
+                "{{ PREFIX }}/bin/anaconda_prompt"
+            ],
+            "activate": false,
+            "terminal": false,
+            "icon": "{{ MENU_DIR }}/anaconda_prompt.{{ ICON_EXT }}",
+            "description": "Launches a terminal window with conda activated.",
+            "platforms": {
+                "win": {
+                    "desktop": false,
+                    "quicklaunch": false,
+                    "terminal_profile": "Anaconda Prompt ({{ DISTRIBUTION_NAME }})",
+                    "command": [
+                        "%WINDIR%\\System32\\cmd.exe",
+                        "/K",
+                        "{{ BASE_PREFIX }}\\Scripts\\activate.bat",
+                        "{{ PREFIX }}"
+                    ],
+                    "working_dir": "{{ HOME }}"
+                },
+                "osx": {
+                    "entitlements": [
+                        "com.apple.security.automation.apple-events"
+                    ]
+                }
+            }
+        }
+    ]
+}
