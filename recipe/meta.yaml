@@ -3,7 +3,7 @@ package:
   version: 1.0.0
 
 build:
-  number: 0
+  number: 1
   # Only building this on Windows for now until
   # other platforms are fleshed out more.
   skip: True  # [not win]
