@@ -1,9 +1,9 @@
 package:
   name: anaconda_prompt
-  version: 1.0.0
+  version: 1.1.0
 
 build:
-  number: 1
+  number: 0
   # Only building this on Windows for now until
   # other platforms are fleshed out more.
   skip: True  # [not win]
@@ -24,7 +24,7 @@ test:
 
 app:
   entry: for /D %%i in ("${CONDA_ROOT_PREFIX}") do wt -w last new-tab -p "Anaconda Prompt (%%~ni)" # [win]
-  summary: Opens a terminal instance with conda activated (requires menuinst 2.1.0 or greater).
+  summary: Opens a terminal instance with conda activated (requires menuinst 2.1.1 or greater).
   icon: anaconda_prompt.png
   type: desk
 
