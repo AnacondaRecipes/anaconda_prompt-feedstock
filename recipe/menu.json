@@ -14,6 +14,8 @@
             "description": "Launches a terminal window with conda activated.",
             "platforms": {
                 "win": {
+		    "desktop": false,
+		    "quicklaunch": false,
                     "terminal_profile": "Anaconda Prompt ({{ DISTRIBUTION_NAME }})",
                     "app_user_model_id": "anaconda.CmdExe.{{ DISTRIBUTION_NAME }}.{{ ENV_NAME }}",
                     "command": [
@@ -28,7 +30,8 @@
                     "entitlements": [
                         "com.apple.security.automation.apple-events"
                     ]
-                }
+                },
+		"linux": null
             }
         }
     ]
