@@ -16,7 +16,7 @@
                 "win": {
 		    "desktop": false,
 		    "quicklaunch": false,
-                    "terminal_profile": "Anaconda Prompt ({{ DISTRIBUTION_NAME }})",
+                    "terminal_profile": "Anaconda Prompt ({{ DISTRIBUTION_NAME }}__ENV_PLACEHOLDER_TERMINAL__)",
                     "app_user_model_id": "anaconda.CmdExe.{{ DISTRIBUTION_NAME }}.{{ ENV_NAME }}",
                     "command": [
                         "%WINDIR%\\System32\\cmd.exe",

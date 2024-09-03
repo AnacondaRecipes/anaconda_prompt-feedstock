@@ -26,8 +26,10 @@ IF %ERRORLEVEL% == 1 GOTO :menuinst_too_old
 %PYTHON_CMD% -c "import os, sys; from pathlib import Path; from menuinst.utils import _default_prefix; sys.exit(int(Path(os.environ['PREFIX']).samefile(_default_prefix(which='base'))))"
 IF %ERRORLEVEL% == 0 (
     CALL :patch "__ENV_PLACEHOLDER__= ^({{ ENV_NAME }}^)"
+    CALL :patch "__ENV_PLACEHOLDER_TERMINAL__=/{{ ENV_NAME }}"
 ) ELSE (
     CALL :patch "__ENV_PLACEHOLDER__="
+    CALL :patch "__ENV_PLACEHOLDER_TERMINAL__="
 )
 GOTO :exit
 
