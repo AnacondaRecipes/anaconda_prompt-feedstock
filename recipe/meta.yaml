@@ -11,7 +11,7 @@ build:
 requirements:
   run_constrained:
     - anaconda-navigator >=1.9.8
-    - menuinst >=2.1.0
+    - menuinst >=2.1.1
 
 test:
   commands:
