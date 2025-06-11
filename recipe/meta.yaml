@@ -15,8 +15,8 @@ requirements:
 
 test:
   commands:
-    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt_menu.json EXIT 1  # [win]
-    - IF NOT EXIST %PREFIX%\\Menu\\anaconda_prompt.ico EXIT 1        # [win]
+    - IF NOT EXIST "%PREFIX%\\Menu\\anaconda_prompt_menu.json" EXIT 1  # [win]
+    - IF NOT EXIST "%PREFIX%\\Menu\\anaconda_prompt.ico" EXIT 1        # [win]
     - test -f ${PREFIX}/Menu/anaconda_prompt_menu.json || exit 1     # [not win]
     - test -f ${PREFIX}/bin/anaconda_prompt  || exit 1               # [not win]
     - test -f ${PREFIX}/Menu/anaconda_prompt.icns || exit 1          # [osx]
