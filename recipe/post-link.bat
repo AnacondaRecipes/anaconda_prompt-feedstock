@@ -17,6 +17,11 @@ IF EXIST "%PREFIX%\_conda.exe" (
     GOTO :get_menuinst
 )
 
+IF EXIST "%CONDA_ROOT_PREFIX%\_conda.exe" (
+    SET PYTHON_CMD="%CONDA_ROOT_PREFIX%\_conda.exe" python
+    GOTO :get_menuinst
+)
+
 GOTO :menuinst_too_old
 
 :get_menuinst
