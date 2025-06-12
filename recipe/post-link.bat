@@ -3,9 +3,9 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 REM The menuinst v2 json file is not compatible with menuinst versions
 REM older than 2.1.1. Copy the appropriate file as the menu file.
 
-SET LOGFILE=%PREFIX%\.messages.txt
-SET MENU_DIR=%PREFIX%\Menu
-SET MENU_PATH=%MENU_DIR%\%PKG_NAME%_menu.json
+SET "LOGFILE=%PREFIX%\.messages.txt"
+SET "MENU_DIR=%PREFIX%\Menu"
+SET "MENU_PATH=%MENU_DIR%\%PKG_NAME%_menu.json"
 
 IF EXIST "%CONDA_PYTHON_EXE%" (
     SET PYTHON_CMD="%CONDA_PYTHON_EXE%"
@@ -14,6 +14,11 @@ IF EXIST "%CONDA_PYTHON_EXE%" (
 
 IF EXIST "%PREFIX%\_conda.exe" (
     SET PYTHON_CMD="%PREFIX%\_conda.exe" python
+    GOTO :get_menuinst
+)
+
+IF EXIST "%CONDA_ROOT_PREFIX%\_conda.exe" (
+    SET PYTHON_CMD="%CONDA_ROOT_PREFIX%\_conda.exe" python
     GOTO :get_menuinst
 )
 
@@ -34,7 +39,7 @@ IF %ERRORLEVEL% == 0 (
 GOTO :exit
 
 :patch
-    SET TMPMENU=%MENU_DIR%\%PKG_NAME%_menu_tmp.json
+    SET "TMPMENU=%MENU_DIR%\%PKG_NAME%_menu_tmp.json"
     SET FINDREPLACE=%~1
     FOR /f "delims=" %%i IN ('type "%MENU_PATH%"') DO (
         SET s=%%i
