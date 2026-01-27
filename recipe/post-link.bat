@@ -13,8 +13,14 @@ IF EXIST "%CONDA_PYTHON_EXE%" (
 )
 
 IF EXIST "%CONDA_EXE%" (
-    SET PYTHON_CMD="%CONDA_EXE%" python
-    GOTO :get_menuinst
+    REM Suppress the output of the command in case it returns
+    "%CONDA_EXE%" python -V >nul 2>&1
+
+    REM Note that this implies "if not errorlevel equal to or greater than 1"
+    if not errorlevel 1 (
+        SET PYTHON_CMD="%CONDA_EXE%" python
+        GOTO :get_menuinst
+    )
 )
 
 IF EXIST "%PREFIX%\_conda.exe" (
