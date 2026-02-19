@@ -30,8 +30,7 @@
                     "entitlements": [
                         "com.apple.security.automation.apple-events"
                     ]
-                },
-                "linux": null
+                }
             }
         }
     ]
