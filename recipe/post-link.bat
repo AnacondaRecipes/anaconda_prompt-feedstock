@@ -12,6 +12,14 @@ IF EXIST "%CONDA_PYTHON_EXE%" (
     GOTO :get_menuinst
 )
 
+IF EXIST "%CONDA_EXE%" (
+    REM Check if CONDA_EXE points to conda-standalone and not regular conda
+    "%CONDA_EXE%" python -V >nul 2>&1 && (
+        SET PYTHON_CMD="%CONDA_EXE%" python
+        GOTO :get_menuinst
+    )
+)
+
 IF EXIST "%PREFIX%\_conda.exe" (
     SET PYTHON_CMD="%PREFIX%\_conda.exe" python
     GOTO :get_menuinst
