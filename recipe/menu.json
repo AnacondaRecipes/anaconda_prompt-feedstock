@@ -22,7 +22,7 @@
                         "{{ BASE_PREFIX }}\\Scripts\\activate.bat",
                         "{{ PREFIX }}"
                     ],
-                    "working_dir": "{{ HOME }}"
+                    "working_dir": "%USERPROFILE%"
                 },
                 "osx": {
                     "entitlements": [
